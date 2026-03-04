@@ -42,33 +42,33 @@ function RelationshipsPanel({
   return (
     <SectionPanel className="space-y-4">
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold text-white">Relationship lattice</h3>
-        <p className="text-sm leading-6 text-slate-300/80">{description}</p>
+        <h3 className="text-base font-medium text-white">Relationship lattice</h3>
+        <p className="text-sm leading-relaxed text-slate-400">{description}</p>
       </div>
       {relationships.length ? (
         <div className="space-y-3">
           {relationships.map((relationship) => (
             <div
               key={relationship.id}
-              className="rounded-2xl border border-white/8 bg-white/[0.03] p-4"
+              className="rounded-lg border border-white/[0.05] bg-white/[0.02] p-4"
             >
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2">
                 <p className="text-sm font-medium text-white">
                   {relationship.source_name} to {relationship.target_name}
                 </p>
                 <StatusBadge status={relationship.status} />
-                <span className="rounded-full border border-white/10 px-2 py-1 text-[11px] uppercase tracking-[0.22em] text-slate-300/82">
+                <span className="rounded-md border border-white/[0.06] px-2 py-0.5 text-xs text-slate-500">
                   {relationship.relationship_type}
                 </span>
               </div>
               {relationship.dynamic ? (
-                <p className="mt-3 text-sm leading-6 text-slate-300/84">{relationship.dynamic}</p>
+                <p className="mt-3 text-sm leading-relaxed text-slate-400">{relationship.dynamic}</p>
               ) : null}
             </div>
           ))}
         </div>
       ) : (
-        <p className="text-sm text-slate-300/80">No relationship edges resolved for this character yet.</p>
+        <p className="text-sm text-slate-500">No relationship edges resolved for this character yet.</p>
       )}
     </SectionPanel>
   );
@@ -87,32 +87,32 @@ export function CharacterDossier({
 
   return (
     <div className="space-y-6">
-      <SectionPanel tone="hero" className="space-y-6">
+      <SectionPanel tone="hero" className="space-y-5">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
           <div className="space-y-4">
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2">
               <StatusBadge status={character.status} />
-              <span className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.22em] text-slate-300/80">
+              <span className="rounded-md border border-white/[0.06] px-2 py-0.5 text-xs font-medium text-slate-400">
                 {character.canon_id}
               </span>
               {character.faction ? (
-                <span className="rounded-full border border-cyan-300/15 bg-cyan-300/10 px-3 py-1 text-xs uppercase tracking-[0.22em] text-cyan-100/90">
+                <span className="rounded-md border border-sky-400/10 bg-sky-400/[0.04] px-2 py-0.5 text-xs font-medium text-sky-300">
                   {character.faction}
                 </span>
               ) : null}
             </div>
             <div className="space-y-2">
-              <h1 className="text-4xl font-semibold tracking-[-0.05em] text-white">
+              <h1 className="text-3xl font-medium tracking-[-0.02em] text-white">
                 {character.name}
               </h1>
-              <p className="text-base text-slate-200/80">
-                {character.codename ? `${character.codename} • ` : null}
-                {character.cast_tier ? `${character.cast_tier} • ` : null}
+              <p className="text-base text-slate-400">
+                {character.codename ? `${character.codename} · ` : null}
+                {character.cast_tier ? `${character.cast_tier} · ` : null}
                 v{character.version}
               </p>
             </div>
             {character.prompt_description ? (
-              <p className="max-w-3xl text-sm leading-7 text-slate-200/84">
+              <p className="max-w-3xl text-sm leading-relaxed text-slate-300">
                 {character.prompt_description}
               </p>
             ) : null}
@@ -124,16 +124,16 @@ export function CharacterDossier({
               onClick={onToggleLock}
               disabled={lockPending}
               className={cn(
-                "rounded-2xl px-4 py-3 text-sm font-medium transition",
+                "rounded-lg border px-4 py-2.5 text-sm font-medium transition",
                 isLocked
-                  ? "border border-rose-300/20 bg-rose-300/12 text-rose-100 hover:bg-rose-300/18"
-                  : "border border-cyan-300/20 bg-cyan-300/12 text-cyan-50 hover:bg-cyan-300/18",
+                  ? "border-rose-400/15 bg-rose-400/[0.06] text-rose-200 hover:bg-rose-400/10"
+                  : "border-sky-400/15 bg-sky-400/[0.06] text-sky-200 hover:bg-sky-400/10",
                 lockPending && "cursor-wait opacity-70",
               )}
             >
               {lockPending ? "Syncing canon..." : isLocked ? "Unlock Canon" : "Lock Canon"}
             </button>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm text-slate-300/84">
+            <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-3 text-sm text-slate-400">
               <p>Created {formatDateTime(character.created_at)}</p>
               <p>Updated {formatDateTime(character.updated_at)}</p>
               <p>
@@ -148,7 +148,7 @@ export function CharacterDossier({
             {character.tags.map((tag, index) => (
               <span
                 key={`${String(tag)}-${index}`}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-slate-100/90"
+                className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-0.5 text-xs text-slate-300"
               >
                 {String(tag)}
               </span>
@@ -164,10 +164,10 @@ export function CharacterDossier({
             type="button"
             onClick={() => setActiveTab(tab.id)}
             className={cn(
-              "rounded-full border px-4 py-2 text-sm transition",
+              "rounded-lg border px-3.5 py-1.5 text-sm transition",
               activeTab === tab.id
-                ? "border-cyan-300/30 bg-cyan-300/14 text-cyan-100"
-                : "border-white/10 bg-white/[0.03] text-slate-300 hover:border-white/16 hover:text-white",
+                ? "border-sky-400/15 bg-sky-400/[0.06] text-sky-200"
+                : "border-white/[0.06] bg-white/[0.02] text-slate-400 hover:bg-white/[0.04] hover:text-slate-200",
             )}
           >
             {tab.label}

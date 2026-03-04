@@ -8,7 +8,6 @@ import { useDeferredValue, useEffect, useRef, useState } from "react";
 import { api } from "@/lib/api/client";
 import { NAV_ITEMS } from "@/lib/navigation";
 import { useCanonStore } from "@/lib/store/canon-store";
-import { cn } from "@/lib/utils";
 
 type CommandItem = {
   id: string;
@@ -99,42 +98,42 @@ export function CommandPalette() {
   const characterCommands: CommandItem[] = characters.map((character) => ({
     id: `character-${character.id}`,
     label: character.name,
-    description: `${character.canon_id} • ${character.faction ?? "untyped"} • ${character.status}`,
+    description: `${character.canon_id} · ${character.faction ?? "untyped"} · ${character.status}`,
     href: `/characters/${character.id}`,
     group: "Characters",
   }));
   const episodeCommands: CommandItem[] = episodes.map((episode) => ({
     id: `episode-${episode.id}`,
     label: episode.name,
-    description: `${episode.canon_id} • season ${episode.season} • ${episode.status}`,
+    description: `${episode.canon_id} · season ${episode.season} · ${episode.status}`,
     href: `/episodes/${episode.id}`,
     group: "Episodes",
   }));
   const chapterCommands: CommandItem[] = chapters.map((chapter) => ({
     id: `chapter-${chapter.id}`,
     label: chapter.name,
-    description: `${chapter.canon_id} • season ${chapter.season} • ${chapter.status}`,
+    description: `${chapter.canon_id} · season ${chapter.season} · ${chapter.status}`,
     href: `/chapters/${chapter.id}`,
     group: "Chapters",
   }));
   const locationCommands: CommandItem[] = locations.map((location) => ({
     id: `location-${location.id}`,
     label: location.name,
-    description: `${location.canon_id} • ${location.region ?? "unmapped"} • ${location.status}`,
+    description: `${location.canon_id} · ${location.region ?? "unmapped"} · ${location.status}`,
     href: `/locations/${location.id}`,
     group: "Locations",
   }));
   const factionCommands: CommandItem[] = factions.map((faction) => ({
     id: `faction-${faction.id}`,
     label: faction.name,
-    description: `${faction.canon_id} • ${faction.status}`,
+    description: `${faction.canon_id} · ${faction.status}`,
     href: `/factions/${faction.id}`,
     group: "Factions",
   }));
   const promptTemplateCommands: CommandItem[] = promptTemplates.map((template) => ({
     id: `prompt-template-${template.id}`,
     label: template.name,
-    description: `${template.canon_id} • ${template.engine} • ${template.status}`,
+    description: `${template.canon_id} · ${template.engine} · ${template.status}`,
     href: `/prompt-templates/${template.id}`,
     group: "Prompt Forge",
   }));
@@ -160,10 +159,10 @@ export function CommandPalette() {
     .slice(0, 12);
 
   return (
-    <div className="fixed inset-0 z-[90] flex items-start justify-center bg-slate-950/72 px-4 pt-[12vh] backdrop-blur-xl">
-      <div className="w-full max-w-2xl rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(14,21,37,0.98),rgba(7,12,21,0.96))] p-4 shadow-[0_30px_100px_rgba(0,0,0,0.55)]">
-        <div className="flex items-center gap-3 rounded-[24px] border border-white/10 bg-white/[0.03] px-4 py-3">
-          <Search className="h-4 w-4 text-cyan-100/90" />
+    <div className="fixed inset-0 z-[90] flex items-start justify-center bg-black/60 px-4 pt-[12vh] backdrop-blur-md">
+      <div className="w-full max-w-xl rounded-2xl border border-white/[0.08] bg-[#0e1420] p-3 shadow-2xl">
+        <div className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-2.5">
+          <Search className="h-4 w-4 text-sky-400/60" />
           <input
             ref={inputRef}
             value={query}
@@ -171,14 +170,14 @@ export function CommandPalette() {
             placeholder="Jump to a page, character, or workflow..."
             className="w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
           />
-          <span className="rounded-full border border-white/10 px-2 py-1 text-[10px] uppercase tracking-[0.24em] text-slate-400">
+          <span className="rounded border border-white/[0.08] px-1.5 py-0.5 font-mono text-[10px] text-slate-500">
             esc
           </span>
         </div>
 
-        <div className="mt-4 max-h-[60vh] overflow-y-auto">
+        <div className="mt-3 max-h-[60vh] overflow-y-auto">
           {filteredCommands.length ? (
-            <div className="space-y-2">
+            <div className="space-y-1">
               {filteredCommands.map((command) => (
                 <button
                   key={command.id}
@@ -188,31 +187,26 @@ export function CommandPalette() {
                     setQuery("");
                     setOpen(false);
                   }}
-                  className={cn(
-                    "flex w-full items-center justify-between rounded-[24px] border border-transparent px-4 py-3 text-left transition",
-                    "hover:border-cyan-300/18 hover:bg-cyan-300/[0.07]",
-                  )}
+                  className="flex w-full items-center justify-between rounded-lg border border-transparent px-3 py-2.5 text-left transition hover:bg-white/[0.05]"
                 >
                   <div>
                     <p className="text-sm font-medium text-white">{command.label}</p>
-                    <p className="text-xs uppercase tracking-[0.24em] text-slate-400/80">
-                      {command.group}
-                    </p>
+                    <p className="text-xs text-slate-500">{command.group}</p>
                   </div>
-                  <p className="max-w-[280px] text-right text-sm text-slate-300/75">
+                  <p className="max-w-[240px] text-right text-xs text-slate-500">
                     {command.description}
                   </p>
                 </button>
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center gap-3 px-6 py-16 text-center">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3 text-cyan-100">
+            <div className="flex flex-col items-center gap-3 px-6 py-12 text-center">
+              <div className="rounded-lg border border-white/[0.06] bg-white/[0.03] p-2.5 text-sky-300">
                 <Command className="h-5 w-5" />
               </div>
               <div className="space-y-1">
                 <p className="text-sm font-medium text-white">No matches</p>
-                <p className="text-sm text-slate-300/78">
+                <p className="text-sm text-slate-500">
                   Try a page name, a character name, or a canon ID.
                 </p>
               </div>

@@ -67,9 +67,9 @@ export default function LocationsPage() {
       <SectionPanel className="space-y-4">
         <div className="grid gap-4 xl:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Search</span>
-            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
-              <Search className="h-4 w-4 text-cyan-100/90" />
+            <span className="text-xs font-medium text-slate-500">Search</span>
+            <div className="flex items-center gap-3 rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3">
+              <Search className="h-4 w-4 text-sky-200" />
               <input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
@@ -80,11 +80,11 @@ export default function LocationsPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Type</span>
+            <span className="text-xs font-medium text-slate-500">Type</span>
             <select
               value={locationType}
               onChange={(event) => setLocationType(event.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none"
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none"
             >
               <option value="all" className="bg-slate-950">All types</option>
               {locationTypes.map((value) => (
@@ -96,11 +96,11 @@ export default function LocationsPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Region</span>
+            <span className="text-xs font-medium text-slate-500">Region</span>
             <select
               value={region}
               onChange={(event) => setRegion(event.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none"
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none"
             >
               <option value="all" className="bg-slate-950">All regions</option>
               {regions.map((value) => (
@@ -112,11 +112,11 @@ export default function LocationsPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Status</span>
+            <span className="text-xs font-medium text-slate-500">Status</span>
             <select
               value={status}
               onChange={(event) => setStatus(event.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none"
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none"
             >
               <option value="all" className="bg-slate-950">All statuses</option>
               <option value="draft" className="bg-slate-950">Draft</option>
@@ -129,19 +129,19 @@ export default function LocationsPage() {
         </div>
 
         <div className="grid gap-3 md:grid-cols-3">
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Visible locations</p>
-            <p className="mt-3 text-3xl font-semibold text-white">{formatCount(filteredLocations.length)}</p>
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+            <p className="text-xs font-medium text-slate-500">Visible locations</p>
+            <p className="mt-3 text-2xl font-medium text-white">{formatCount(filteredLocations.length)}</p>
           </div>
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Regions present</p>
-            <p className="mt-3 text-3xl font-semibold text-white">
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+            <p className="text-xs font-medium text-slate-500">Regions present</p>
+            <p className="mt-3 text-2xl font-medium text-white">
               {formatCount(new Set(filteredLocations.map((item) => item.region).filter(Boolean)).size)}
             </p>
           </div>
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Locked sites</p>
-            <p className="mt-3 text-3xl font-semibold text-white">
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+            <p className="text-xs font-medium text-slate-500">Locked sites</p>
+            <p className="mt-3 text-2xl font-medium text-white">
               {formatCount(filteredLocations.filter((item) => item.status === "locked").length)}
             </p>
           </div>
@@ -161,7 +161,7 @@ export default function LocationsPage() {
               meta={[location.canon_id, location.location_type, location.region]}
               tags={location.tags}
               footer={
-                <p className="text-sm leading-6 text-slate-300/80">
+                <p className="text-sm leading-relaxed text-slate-300">
                   {location.description ?? "Open the location to inspect atmosphere, features, and production assets."}
                 </p>
               }

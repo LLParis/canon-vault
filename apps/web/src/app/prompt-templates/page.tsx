@@ -65,9 +65,9 @@ export default function PromptTemplatesPage() {
       <SectionPanel className="space-y-4">
         <div className="grid gap-4 xl:grid-cols-[1.4fr_1fr_1fr]">
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Search</span>
-            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
-              <Search className="h-4 w-4 text-cyan-100/90" />
+            <span className="text-xs font-medium text-slate-500">Search</span>
+            <div className="flex items-center gap-3 rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3">
+              <Search className="h-4 w-4 text-sky-200" />
               <input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
@@ -78,11 +78,11 @@ export default function PromptTemplatesPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Engine</span>
+            <span className="text-xs font-medium text-slate-500">Engine</span>
             <select
               value={engine}
               onChange={(event) => setEngine(event.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none"
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none"
             >
               <option value="all" className="bg-slate-950">All engines</option>
               {engines.map((value) => (
@@ -94,11 +94,11 @@ export default function PromptTemplatesPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Entity type</span>
+            <span className="text-xs font-medium text-slate-500">Entity type</span>
             <select
               value={entityType}
               onChange={(event) => setEntityType(event.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none"
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none"
             >
               <option value="all" className="bg-slate-950">All entity types</option>
               {entityTypes.map((value) => (
@@ -111,19 +111,19 @@ export default function PromptTemplatesPage() {
         </div>
 
         <div className="grid gap-3 md:grid-cols-3">
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Visible templates</p>
-            <p className="mt-3 text-3xl font-semibold text-white">{formatCount(filteredTemplates.length)}</p>
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+            <p className="text-xs font-medium text-slate-500">Visible templates</p>
+            <p className="mt-3 text-2xl font-medium text-white">{formatCount(filteredTemplates.length)}</p>
           </div>
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Engines loaded</p>
-            <p className="mt-3 text-3xl font-semibold text-white">
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+            <p className="text-xs font-medium text-slate-500">Engines loaded</p>
+            <p className="mt-3 text-2xl font-medium text-white">
               {formatCount(new Set(filteredTemplates.map((item) => item.engine)).size)}
             </p>
           </div>
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">With LoRAs</p>
-            <p className="mt-3 text-3xl font-semibold text-white">
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+            <p className="text-xs font-medium text-slate-500">With LoRAs</p>
+            <p className="mt-3 text-2xl font-medium text-white">
               {formatCount(filteredTemplates.filter((item) => (item.loras?.length ?? 0) > 0).length)}
             </p>
           </div>
@@ -143,7 +143,7 @@ export default function PromptTemplatesPage() {
               meta={[template.canon_id, template.engine, template.entity_type]}
               tags={template.tags}
               footer={
-                <p className="text-sm leading-6 text-slate-300/80">
+                <p className="text-sm leading-relaxed text-slate-300">
                   {template.template}
                 </p>
               }

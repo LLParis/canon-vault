@@ -20,22 +20,20 @@ export function PageHeader({
   return (
     <div
       className={cn(
-        "flex flex-col gap-5 border-b border-white/8 pb-6 md:flex-row md:items-end md:justify-between",
+        "flex flex-col gap-5 border-b border-white/[0.05] pb-5 md:flex-row md:items-end md:justify-between",
         className,
       )}
     >
       <div className="max-w-3xl space-y-3">
         {eyebrow ? (
-          <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-cyan-200/75">
-            {eyebrow}
-          </p>
+          <p className="text-xs font-medium text-sky-300/60">{eyebrow}</p>
         ) : null}
         <div className="space-y-2">
-          <h1 className="text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
+          <h1 className="text-2xl font-medium tracking-[-0.02em] text-white sm:text-3xl">
             {title}
           </h1>
           {description ? (
-            <p className="max-w-2xl text-sm leading-6 text-slate-300/88 sm:text-base">
+            <p className="max-w-2xl text-sm leading-relaxed text-slate-400 sm:text-base">
               {description}
             </p>
           ) : null}

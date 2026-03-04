@@ -5,12 +5,12 @@ import { cn, formatJsonValue, humanizeKey } from "@/lib/utils";
 
 function renderValue(value: unknown, depth = 0): ReactNode {
   if (value === null || value === undefined) {
-    return <p className="text-sm text-slate-400/80">Not set.</p>;
+    return <p className="text-sm text-slate-500">Not set.</p>;
   }
 
   if (Array.isArray(value)) {
     if (value.length === 0) {
-      return <p className="text-sm text-slate-400/80">No entries.</p>;
+      return <p className="text-sm text-slate-500">No entries.</p>;
     }
 
     const primitivesOnly = value.every(
@@ -23,7 +23,7 @@ function renderValue(value: unknown, depth = 0): ReactNode {
           {value.map((item, index) => (
             <span
               key={`${String(item)}-${index}`}
-              className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-slate-100"
+              className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-0.5 text-sm text-slate-200"
             >
               {formatJsonValue(item)}
             </span>
@@ -37,7 +37,7 @@ function renderValue(value: unknown, depth = 0): ReactNode {
         {value.map((item, index) => (
           <div
             key={index}
-            className="rounded-2xl border border-white/8 bg-white/[0.03] p-3"
+            className="rounded-lg border border-white/[0.05] bg-white/[0.02] p-3"
           >
             {renderValue(item, depth + 1)}
           </div>
@@ -50,14 +50,14 @@ function renderValue(value: unknown, depth = 0): ReactNode {
     const entries = Object.entries(value as Record<string, unknown>).filter(([, item]) => item !== undefined);
 
     if (entries.length === 0) {
-      return <p className="text-sm text-slate-400/80">No structured data.</p>;
+      return <p className="text-sm text-slate-500">No structured data.</p>;
     }
 
     return (
       <div className={cn("grid gap-3", depth === 0 && "md:grid-cols-2")}>
         {entries.map(([key, item]) => (
-          <div key={key} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
-            <p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-slate-400/80">
+          <div key={key} className="rounded-lg border border-white/[0.05] bg-white/[0.02] p-4">
+            <p className="mb-3 text-xs font-medium text-slate-500">
               {humanizeKey(key)}
             </p>
             {renderValue(item, depth + 1)}
@@ -71,10 +71,10 @@ function renderValue(value: unknown, depth = 0): ReactNode {
     return (
       <span
         className={cn(
-          "inline-flex rounded-full border px-2.5 py-1 text-xs font-medium uppercase tracking-[0.2em]",
+          "inline-flex rounded-md border px-2 py-0.5 text-xs font-medium",
           value
-            ? "border-lime-300/20 bg-lime-300/12 text-lime-100"
-            : "border-white/10 bg-white/[0.06] text-slate-300",
+            ? "border-emerald-400/15 bg-emerald-400/[0.06] text-emerald-200"
+            : "border-white/[0.06] bg-white/[0.03] text-slate-400",
         )}
       >
         {value ? "Yes" : "No"}
@@ -82,7 +82,7 @@ function renderValue(value: unknown, depth = 0): ReactNode {
     );
   }
 
-  return <p className="whitespace-pre-wrap text-sm leading-6 text-slate-100/92">{String(value)}</p>;
+  return <p className="whitespace-pre-wrap text-sm leading-relaxed text-slate-200">{String(value)}</p>;
 }
 
 export function JsonSection({
@@ -97,8 +97,8 @@ export function JsonSection({
   return (
     <SectionPanel className="space-y-4">
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold tracking-[-0.03em] text-white">{title}</h3>
-        {description ? <p className="text-sm leading-6 text-slate-300/80">{description}</p> : null}
+        <h3 className="text-base font-medium text-white">{title}</h3>
+        {description ? <p className="text-sm leading-relaxed text-slate-400">{description}</p> : null}
       </div>
       {renderValue(data)}
     </SectionPanel>

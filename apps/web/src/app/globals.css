@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #06111f;
-  --foreground: #f6f8ff;
-  --muted: #8ea5c7;
-  --line: rgba(255, 255, 255, 0.1);
-  --panel: rgba(11, 21, 36, 0.82);
-  --panel-strong: rgba(9, 16, 28, 0.96);
-  --accent-cyan: #58e0ff;
-  --accent-rose: #ff8a7a;
-  --accent-lime: #c7ff74;
-  --accent-amber: #ffd36e;
+  --background: #0a0f1a;
+  --foreground: #e8ecf4;
+  --muted: #7d8ba0;
+  --line: rgba(255, 255, 255, 0.07);
+  --panel: rgba(14, 19, 30, 0.80);
+  --panel-strong: rgba(10, 15, 24, 0.94);
+  --accent: #5eb5f7;
+  --accent-muted: #4a94d4;
+  --semantic-amber: #e5a93e;
+  --semantic-rose: #e06b6b;
+  --semantic-green: #5ec484;
+  --semantic-gray: #6b7a8d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-ibm-plex-mono);
 }
 
@@ -30,37 +32,9 @@ body {
 }
 
 body {
-  position: relative;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-space-grotesk), sans-serif;
-  background-image:
-    radial-gradient(circle at 10% 10%, rgba(88, 224, 255, 0.12), transparent 24%),
-    radial-gradient(circle at 85% 20%, rgba(255, 138, 122, 0.12), transparent 22%),
-    radial-gradient(circle at 50% 100%, rgba(199, 255, 116, 0.07), transparent 28%),
-    linear-gradient(180deg, #08111c 0%, #050912 100%);
-}
-
-body::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(circle at center, black, transparent 78%);
-  opacity: 0.3;
-}
-
-body::after {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: auto 0 0 0;
-  height: 30vh;
-  background: linear-gradient(180deg, transparent, rgba(3, 6, 12, 0.72));
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
 
 * {
@@ -68,7 +42,7 @@ body::after {
 }
 
 *::selection {
-  background: rgba(88, 224, 255, 0.35);
+  background: rgba(94, 181, 247, 0.30);
   color: white;
 }
 
@@ -78,11 +52,11 @@ input,
 select,
 textarea {
   transition:
-    background-color 160ms ease,
-    border-color 160ms ease,
-    color 160ms ease,
-    box-shadow 160ms ease,
-    transform 160ms ease;
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    box-shadow 200ms ease,
+    opacity 200ms ease;
 }
 
 button,
@@ -103,22 +77,22 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.03);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   border: 2px solid transparent;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(88, 224, 255, 0.45), rgba(88, 224, 255, 0.2));
+  background: rgba(255, 255, 255, 0.12);
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(88, 224, 255, 0.6), rgba(88, 224, 255, 0.28));
+  background: rgba(255, 255, 255, 0.20);
   background-clip: padding-box;
 }

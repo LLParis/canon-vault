@@ -89,7 +89,7 @@ export default function PromptTemplateDetailPage() {
         actions={
           <Link
             href="/prompt-templates"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-100"
+            className="inline-flex items-center gap-2 rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-2 text-sm text-slate-100"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to prompt forge
@@ -111,17 +111,17 @@ export default function PromptTemplateDetailPage() {
 
       <SectionPanel className="space-y-4">
         <div className="space-y-2">
-          <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400/76">Render preview</p>
-          <h3 className="text-xl font-semibold text-white">Bind live canon variables</h3>
+          <p className="text-xs font-medium text-slate-500">Render preview</p>
+          <h3 className="text-lg font-medium text-white">Bind live canon variables</h3>
         </div>
 
         <div className="grid gap-4 xl:grid-cols-[1fr_1fr_auto]">
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Character</span>
+            <span className="text-xs font-medium text-slate-500">Character</span>
             <select
               value={characterId}
               onChange={(event) => setCharacterId(event.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none"
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none"
             >
               <option value="none" className="bg-slate-950">No character</option>
               {characters.map((character) => (
@@ -133,11 +133,11 @@ export default function PromptTemplateDetailPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Location</span>
+            <span className="text-xs font-medium text-slate-500">Location</span>
             <select
               value={locationId}
               onChange={(event) => setLocationId(event.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none"
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none"
             >
               <option value="none" className="bg-slate-950">No location</option>
               {locations.map((location) => (
@@ -153,7 +153,7 @@ export default function PromptTemplateDetailPage() {
               type="button"
               onClick={() => renderMutation.mutate()}
               disabled={renderMutation.isPending}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-cyan-300/20 bg-cyan-300/12 px-4 py-3 text-sm font-medium text-cyan-50 disabled:cursor-wait disabled:opacity-70"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-sky-400/15 bg-sky-400/[0.06] px-4 py-3 text-sm font-medium text-sky-200 disabled:cursor-wait disabled:opacity-70"
             >
               <Sparkles className="h-4 w-4" />
               {renderMutation.isPending ? "Rendering..." : "Render preview"}
@@ -162,7 +162,7 @@ export default function PromptTemplateDetailPage() {
         </div>
 
         {renderError ? (
-          <div className="rounded-[24px] border border-rose-300/18 bg-rose-300/[0.08] p-4 text-sm text-rose-50">
+          <div className="rounded-xl border border-rose-300/18 bg-rose-300/[0.08] p-4 text-sm text-rose-50">
             {renderError}
           </div>
         ) : null}
@@ -184,10 +184,10 @@ export default function PromptTemplateDetailPage() {
         <>
           <SectionPanel className="space-y-4">
             <div className="space-y-2">
-              <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400/76">Rendered prompt</p>
-              <h3 className="text-xl font-semibold text-white">Output preview</h3>
+              <p className="text-xs font-medium text-slate-500">Rendered prompt</p>
+              <h3 className="text-lg font-medium text-white">Output preview</h3>
             </div>
-            <pre className="overflow-x-auto whitespace-pre-wrap rounded-[24px] border border-white/10 bg-white/[0.03] p-4 font-mono text-sm leading-7 text-slate-100">
+            <pre className="overflow-x-auto whitespace-pre-wrap rounded-xl border border-white/[0.06] bg-white/[0.03] p-4 font-mono text-sm leading-relaxed text-slate-100">
               {renderMutation.data.rendered_prompt}
             </pre>
           </SectionPanel>

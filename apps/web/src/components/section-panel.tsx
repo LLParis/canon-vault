@@ -14,11 +14,9 @@ export function SectionPanel({
   return (
     <div
       className={cn(
-        "rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(13,24,42,0.92),rgba(7,13,24,0.88))] p-5 shadow-[0_20px_60px_rgba(1,5,13,0.45)] backdrop-blur-xl",
-        tone === "hero" &&
-          "border-cyan-300/20 bg-[linear-gradient(135deg,rgba(18,40,67,0.95),rgba(8,15,28,0.88))]",
-        tone === "subtle" &&
-          "border-white/8 bg-[linear-gradient(180deg,rgba(10,18,31,0.82),rgba(6,11,22,0.78))]",
+        "rounded-xl border border-white/[0.06] bg-white/[0.03] p-5 shadow-sm",
+        tone === "hero" && "border-sky-400/10 bg-sky-400/[0.03]",
+        tone === "subtle" && "border-white/[0.04] bg-white/[0.02]",
         className,
       )}
       {...props}

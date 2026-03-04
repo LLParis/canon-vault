@@ -48,17 +48,17 @@ export function EntityHero({
     <SectionPanel tone="hero" className="space-y-5">
       <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
         <div className="space-y-4">
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2">
             {status ? <StatusBadge status={status} /> : null}
             {canonId ? (
-              <span className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.22em] text-slate-300/82">
+              <span className="rounded-md border border-white/[0.06] px-2 py-0.5 text-xs font-medium text-slate-400">
                 {canonId}
               </span>
             ) : null}
             {chips?.filter(Boolean).map((chip) => (
               <span
                 key={chip}
-                className="rounded-full border border-cyan-300/15 bg-cyan-300/10 px-3 py-1 text-xs uppercase tracking-[0.22em] text-cyan-100/92"
+                className="rounded-md border border-sky-400/10 bg-sky-400/[0.04] px-2 py-0.5 text-xs font-medium text-sky-300"
               >
                 {chip}
               </span>
@@ -66,12 +66,12 @@ export function EntityHero({
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-4xl font-semibold tracking-[-0.05em] text-white">{title}</h1>
-            {subtitle ? <p className="text-base text-slate-200/82">{subtitle}</p> : null}
+            <h1 className="text-3xl font-medium tracking-[-0.02em] text-white">{title}</h1>
+            {subtitle ? <p className="text-base text-slate-400">{subtitle}</p> : null}
           </div>
 
           {summary ? (
-            <p className="max-w-3xl text-sm leading-7 text-slate-200/84">{summary}</p>
+            <p className="max-w-3xl text-sm leading-relaxed text-slate-300">{summary}</p>
           ) : null}
         </div>
 
@@ -82,10 +82,10 @@ export function EntityHero({
               onClick={onToggleLock}
               disabled={lockPending}
               className={cn(
-                "rounded-2xl border px-4 py-3 text-sm font-medium transition",
+                "rounded-lg border px-4 py-2.5 text-sm font-medium transition",
                 isLocked
-                  ? "border-rose-300/20 bg-rose-300/12 text-rose-100 hover:bg-rose-300/18"
-                  : "border-cyan-300/20 bg-cyan-300/12 text-cyan-50 hover:bg-cyan-300/18",
+                  ? "border-rose-400/15 bg-rose-400/[0.06] text-rose-200 hover:bg-rose-400/10"
+                  : "border-sky-400/15 bg-sky-400/[0.06] text-sky-200 hover:bg-sky-400/10",
                 lockPending && "cursor-wait opacity-70",
               )}
             >
@@ -95,7 +95,7 @@ export function EntityHero({
 
           {actions}
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm text-slate-300/84">
+          <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-3 text-sm text-slate-400">
             {version !== null && version !== undefined ? <p>Version {version}</p> : null}
             {createdAt ? <p>Created {formatDateTime(createdAt)}</p> : null}
             {updatedAt ? <p>Updated {formatDateTime(updatedAt)}</p> : null}
@@ -111,7 +111,7 @@ export function EntityHero({
           {tags.map((tag, index) => (
             <span
               key={`${String(tag)}-${index}`}
-              className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-slate-100/90"
+              className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-0.5 text-xs text-slate-300"
             >
               {String(tag)}
             </span>

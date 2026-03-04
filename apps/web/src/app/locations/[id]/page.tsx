@@ -77,7 +77,7 @@ export default function LocationDetailPage() {
         actions={
           <Link
             href="/locations"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-100"
+            className="inline-flex items-center gap-2 rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-2 text-sm text-slate-100"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to locations

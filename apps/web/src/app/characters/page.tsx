@@ -82,7 +82,7 @@ export default function CharactersPage() {
         actions={
           <Link
             href="/ingest"
-            className="rounded-full border border-cyan-300/20 bg-cyan-300/12 px-4 py-2 text-sm font-medium text-cyan-50"
+            className="rounded-lg border border-sky-400/15 bg-sky-400/[0.06] px-4 py-2 text-sm font-medium text-sky-200"
           >
             Ingest character YAML
           </Link>
@@ -92,9 +92,9 @@ export default function CharactersPage() {
       <SectionPanel className="space-y-4">
         <div className="grid gap-4 xl:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Search</span>
-            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
-              <Search className="h-4 w-4 text-cyan-100/90" />
+            <span className="text-xs font-medium text-slate-500">Search</span>
+            <div className="flex items-center gap-3 rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3">
+              <Search className="h-4 w-4 text-sky-200" />
               <input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
@@ -105,11 +105,11 @@ export default function CharactersPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Status</span>
+            <span className="text-xs font-medium text-slate-500">Status</span>
             <select
               value={status}
               onChange={(event) => setStatus(event.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none"
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none"
             >
               <option value="all" className="bg-slate-950">All statuses</option>
               <option value="draft" className="bg-slate-950">Draft</option>
@@ -121,11 +121,11 @@ export default function CharactersPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Faction</span>
+            <span className="text-xs font-medium text-slate-500">Faction</span>
             <select
               value={faction}
               onChange={(event) => setFaction(event.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none"
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none"
             >
               <option value="all" className="bg-slate-950">All factions</option>
               {factions.map((value) => (
@@ -137,11 +137,11 @@ export default function CharactersPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Cast tier</span>
+            <span className="text-xs font-medium text-slate-500">Cast tier</span>
             <select
               value={castTier}
               onChange={(event) => setCastTier(event.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none"
+              className="w-full rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none"
             >
               <option value="all" className="bg-slate-950">All cast tiers</option>
               {castTiers.map((value) => (
@@ -154,19 +154,19 @@ export default function CharactersPage() {
         </div>
 
         <div className="grid gap-3 sm:grid-cols-3">
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Visible dossiers</p>
-            <p className="mt-3 text-3xl font-semibold text-white">{formatCount(filteredCharacters.length)}</p>
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+            <p className="text-xs font-medium text-slate-500">Visible dossiers</p>
+            <p className="mt-3 text-2xl font-medium text-white">{formatCount(filteredCharacters.length)}</p>
           </div>
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Locked</p>
-            <p className="mt-3 text-3xl font-semibold text-white">
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+            <p className="text-xs font-medium text-slate-500">Locked</p>
+            <p className="mt-3 text-2xl font-medium text-white">
               {formatCount(filteredCharacters.filter((character) => character.status === "locked").length)}
             </p>
           </div>
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400/80">Review queue</p>
-            <p className="mt-3 text-3xl font-semibold text-white">
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+            <p className="text-xs font-medium text-slate-500">Review queue</p>
+            <p className="mt-3 text-2xl font-medium text-white">
               {formatCount(filteredCharacters.filter((character) => character.status === "review").length)}
             </p>
           </div>
@@ -186,7 +186,7 @@ export default function CharactersPage() {
               meta={[character.canon_id, character.faction, character.cast_tier]}
               tags={character.tags}
               footer={
-                <p className="text-sm leading-6 text-slate-300/80">
+                <p className="text-sm leading-relaxed text-slate-300">
                   {character.prompt_description ?? "Enter the dossier to inspect structured canon sections and changelog drift."}
                 </p>
               }
